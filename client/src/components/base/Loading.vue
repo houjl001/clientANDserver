@@ -17,7 +17,7 @@ export default {
   props: {
     text: {
       type: String,
-      default: '加载中...'
+      default: "加载中..."
     }
   }
 };
@@ -40,7 +40,7 @@ export default {
   }
 }
 .load-pup {
-  display: block;
+  display: none;
   position: absolute;
   left: 0;
   right: 0;

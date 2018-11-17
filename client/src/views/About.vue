@@ -3,6 +3,7 @@
     <h1>{{result}}</h1>
     <div class="button" @click="add">add</div>
     <Loading text="正在加载，请稍后。。。"></Loading>
+    <div>this is aboutS</div>
   </div>
 </template>
 <script>
@@ -35,7 +36,7 @@ export default {
     },
     add() {
       this.data++;
-      console.log(this.$http.home)
+      //console.log(this.$http.home)
       this.$http.home().then(res=>{
         console.log(res);
       });
