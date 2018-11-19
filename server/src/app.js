@@ -6,9 +6,10 @@ import serve from 'koa-static';
 import views from 'koa-views';
 import config from './config';
 import routes from './router';
+import init from './init';
 
 const app = new Koa();
-
+init();
 // static
 // if (process.env.NODE_ENV !== 'development') {
 //   app.use(mount(`/${config.context_path}`, serve(path.join(__dirname, '../vue/dist/'))));
