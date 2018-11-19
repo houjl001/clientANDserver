@@ -18,6 +18,6 @@ let post = (url, data) => {
   });
 };
 export default {
-  home: (params) => { return get('home/home', params); },
-  about: (params) => { return post('home/about', params); }
+  home: params => { return get('home/home', params); },
+  about: params => { return post('home/about', params); }
 };
