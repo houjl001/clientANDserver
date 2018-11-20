@@ -10,6 +10,7 @@ import init from './init';
 
 const app = new Koa();
 init();
+
 // static
 // if (process.env.NODE_ENV !== 'development') {
 //   app.use(mount(`/${config.context_path}`, serve(path.join(__dirname, '../vue/dist/'))));
@@ -25,10 +26,6 @@ init();
 //   }
 // });
 // routes
-app.use(async (ctx, next) => {
-  console.log(ctx);
-  await next();
-});
 app.use(mount(`/${config.api_path}`, routes()));
 app.use(mount(`/${config.context_path}`, serve(path.join(__dirname, '../static'))));
 //app.use(mount(`/${config.context_path}`, serve(path.join(__dirname, '../public'))));
