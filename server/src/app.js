@@ -8,8 +8,9 @@ import config from './config';
 import routes from './router';
 import init from './init';
 
+
 const app = new Koa();
-init();
+//init();
 
 // static
 // if (process.env.NODE_ENV !== 'development') {

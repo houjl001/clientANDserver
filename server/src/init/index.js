@@ -1,5 +1,6 @@
 import request from "request-promise";
 import cheerio from "cheerio";
+import redis from '../redis';
 const getTimeout = () => {
   let r = Math.random() * 10000;
   return Number(r.toFixed(0));
@@ -24,7 +25,7 @@ const getDetail = async (list) => {
         });
         screenWriters = screenWriters.join('、');
         let actors = [];
-        $('#info>span').eq(2).find('.attrs').find('span').each((j, el) => {
+        $('#info>span').eq(2).find('.attrs').children().each((j, el) => {
           actors.push($(el).text().replace('/', '').trim());
         });
         actors = actors.join('、');
@@ -56,7 +57,7 @@ const getUrlList = async (max) => {
           detail_url_list.push(detail_url);
         });
         if (index === max - 1) {
-          console.log(detail_url_list);
+          //console.log(detail_url_list);
           reslove(detail_url_list);
         };
         clearTimeout(timeoutArr[index]);
@@ -68,7 +69,10 @@ const getUrlList = async (max) => {
 const init = async () => {
   getUrlList(1).then(list => {
     getDetail(list).then(data => {
-      console.log(data);
+      redis.set('douban_data', JSON.stringify(data));
+      redis.get('douban_data', (err, result) => {
+        console.log('data saved');
+      });
     });
   });
 };
